@@ -1,0 +1,255 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* Custom font imports */
+@font-face {
+  font-family: 'Noto Sans CJK JP';
+  src: url('https://www.firewatchgame.com/fonts/Japanese/NotoSansCJKjp-Bold.otf');
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Styles */
+@layer base {
+  body {
+    @apply font-sans text-gray-100 bg-gradient-to-b from-dark-900 to-dark-800 min-h-screen;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-6xl lg:text-7xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  p {
+    @apply text-gray-300 leading-relaxed;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+    /* Parallax Effect */
+  .parallax-layer {
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gradient-to-b from-orange-500 to-red-600 rounded-full;
+  }
+}
+
+/* Component Styles */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-900 focus:ring-orange-500 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-orange-500 to-red-600 text-white hover:from-orange-600 hover:to-red-700 shadow-lg hover:shadow-orange-500/25;
+  }
+
+  .btn-outline {
+    @apply border border-gray-700 text-gray-300 hover:bg-gray-800/50 hover:border-orange-500/50;
+  }
+
+  .card {
+    @apply bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700/50 transition-all duration-300 hover:border-orange-500/50;
+  }
+
+  .section {
+    @apply py-20 px-6;
+  }
+
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Animation Classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Navigation Styles */
+.navbar-top {
+  @apply fixed top-0 left-0 right-0 z-50 bg-dark-900/80 backdrop-blur-md py-4 px-6 shadow-lg;
+  transition: all 0.3s ease;
+}
+
+.navbar-top.scrolled {
+  @apply py-2 bg-dark-900/95 shadow-xl;
+}
+
+.navbar-top li {
+  @apply list-none;
+}
+
+.navbar-top a {
+  @apply text-gray-300 no-underline text-sm font-medium uppercase tracking-wider px-4 py-2 rounded-md transition-all duration-300 relative overflow-hidden;
+}
+
+.navbar-top a::before {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-600 transition-all duration-300;
+}
+
+.navbar-top a:hover {
+  @apply text-white bg-gray-800/50;
+}
+
+.navbar-top a:hover::before {
+  @apply w-full;
+}
+
+.navbar-top .current a {
+  @apply text-orange-500 bg-gray-800/30;
+}
+
+.navbar-top .current a::before {
+  @apply w-full;
+}
+
+.navbar-top .collapse {
+  display: none;
+}
+
+.navbar-top .reveal {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .navbar-top {
+    padding: 0.75rem 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .navbar-top a {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .navbar-top .collapse {
+    display: inline;
+  }
+  
+  .navbar-top .reveal {
+    display: none;
+  }
+}
+
+/* Hero section - no margin needed since navbar is not fixed */
+
+/* Custom styles that need to be preserved from original */
+.hero-parallax {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.hero-parallax::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(0,0,0,0.3), rgba(139,69,19,0.2));
+  z-index: 1;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  will-change: transform;
+}
+
+.hero-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.1);
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  z-index: 10;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+.japan-block {
+  font-family: 'Noto Sans CJK JP', sans-serif;
+  font-size: 26px;
+  letter-spacing: 4px;
+  margin-top: 40px;
+}
+
+.japan-block a:hover {
+  color: #ffffff;
+}
