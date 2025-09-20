@@ -5,6 +5,7 @@ import NewNavigation from './components/NewNavigation';
 import LandingPage from './components/LandingPage';
 import Dashboard from './components/Dashboard';
 import Alerts from './components/Alerts';
+import RiskMaps from './components/RiskMaps';
 
 // Layout component for dashboard routes
 const DashboardLayout = ({ children }) => (
@@ -36,6 +37,14 @@ function App() {
               element={
                 <DashboardLayout>
                   <Alerts />
+                </DashboardLayout>
+              } 
+            />
+            <Route 
+              path="/risk-maps" 
+              element={
+                <DashboardLayout>
+                  <RiskMaps />
                 </DashboardLayout>
               } 
             />

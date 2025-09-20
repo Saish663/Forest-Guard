@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   const parallaxRef = useRef(null);
@@ -49,9 +50,11 @@ const HeroSection = () => {
           <p className="text-xl md:text-2xl text-gray-300 mb-8">
             Awareness, prediction, and prevention — all in one place.
           </p>
-          <button className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-semibold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
-            Explore Risk Maps
-          </button>
+          <Link to="/risk-maps" className="inline-block">
+            <button className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-semibold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
+              Explore Risk Maps
+            </button>
+          </Link>
         </motion.div>
       </div>
     </div>
